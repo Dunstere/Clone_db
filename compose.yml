@@ -8,9 +8,7 @@ services:
       POSTGRES_DB: gisdb1
     ports:
       - "5432:5432"
-    networks:
-      - net_db1
-
+      
   db2:
     image: postgis/postgis:16-3.4
     container_name: db2
@@ -20,8 +18,6 @@ services:
       POSTGRES_DB: gisdb2
     ports:
       - "5433:5432"
-    networks:
-      - net_db2
 
   geoprocess:
     image: mambaorg/micromamba:latest
@@ -31,10 +27,3 @@ services:
       - ./scripts:/scripts
     working_dir: /scripts
     command: sleep infinity
-
-networks:
-  net_db1:
-    driver: bridge
-
-  net_db2:
-    driver: bridge
